@@ -770,7 +770,7 @@
   }
 
   function renderStatus() {
-    dataStatus.textContent = `Live data source: ${state.sourceLabel}`;
+    dataStatus.textContent = "If your DRGBT tracking work has been publicly released, please feel free to contact us at zhaodongding_ah@163.com, and we will include it in the leaderboard.";
   }
 
   function render() {
