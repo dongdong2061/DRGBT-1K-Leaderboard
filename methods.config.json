@@ -1,0 +1,220 @@
+[
+  {
+    "id": "AINet",
+    "name": "AINet",
+    "notes": "Evaluated on DRGBT1K test split",
+    "result_path": "G:\\DRGBT1k_Results\\AINet_DRGBT1k.zip",
+    "code_path": "G:\\DRGBT1k_method_code\\AINet.zip",
+    "weight_path": "G:\\DRGBT1k_checkpoint\\OSTrack_AINet_ep0028.pth.tar",
+    "result_url": "https://pan.baidu.com/s/1bXgfFM_85s9GlyfZg-tnlA?pwd=kx7g",
+    "code_url": "https://pan.baidu.com/s/1UT4ZpgYc-21Gm3c2suok2g?pwd=7fje",
+    "weight_url": "https://pan.baidu.com/s/1hCftKflwcwGim_53gNChDw?pwd=9xre"
+  },
+  {
+    "id": "BAT",
+    "name": "BAT",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1F57ng_N0FHyfFycWTot5sQ?pwd=mmjm",
+    "code_url": "https://pan.baidu.com/s/1sztMGybzSze7TNH9KbbaAA?pwd=9r3e",
+    "weight_url": "https://pan.baidu.com/s/1TTMPFOqDhcqICcwUr8XwIg?pwd=wdkq"
+  },
+  {
+    "id": "CAFormer",
+    "name": "CAFormer",
+    "notes": "Evaluated on DRGBT1K test split",
+    "result_path": "G:\\DRGBT1k_Results\\CAFormer_DRGBT1k.zip",
+    "code_path": "G:\\DRGBT1k_method_code\\CAFormer.zip",
+    "weight_path": "G:\\DRGBT1k_checkpoint\\CAFormer_ep0026.pth.tar",
+    "result_url": "https://pan.baidu.com/s/1L3wT-n52Qic42FCtM3tIRg?pwd=tggk",
+    "code_url": "https://pan.baidu.com/s/127nPdgybNjlkOgFr5YckwA?pwd=zjau",
+    "weight_url": "https://pan.baidu.com/s/1qs1bj_mLTyMftoXBtaoPdg?pwd=ptc3"
+  },
+  {
+    "id": "CKD",
+    "name": "CKD",
+    "notes": "Evaluated on DRGBT1K test split",
+    "result_path": "G:\\DRGBT1k_Results\\CKD_DRGBT1k.zip",
+    "code_path": "G:\\DRGBT1k_method_code\\CKD.zip",
+    "weight_path": "G:\\DRGBT1k_checkpoint\\OSTrack_CKD_ep0026.pth.tar",
+    "result_url": "https://pan.baidu.com/s/1rMVDXQfKhjs5r28XMKeG6w?pwd=xq5n",
+    "code_url": "https://pan.baidu.com/s/1Cm94pvhxtRQr3KPBar1-wA?pwd=in2b",
+    "weight_url": "https://pan.baidu.com/s/1lwLGLrbzMb0UGqZfBkc3XA?pwd=t6qa"
+  },
+  {
+    "id": "CMRL",
+    "name": "CMRL",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1jrgdk5pDp8xOX0QAI6Wskg?pwd=zwet",
+    "code_url": "https://pan.baidu.com/s/11Z2KRY3Too8J1MjjHSHj2Q?pwd=t6qm",
+    "weight_url": "https://pan.baidu.com/s/17hHZQbPF5yqR5YS-fi-hzw?pwd=f86k"
+  },
+  {
+    "id": "FMTrack",
+    "name": "FMTrack",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1jzZvxgnigbmJWZmySqK2Zg?pwd=dcr1",
+    "code_url": "https://pan.baidu.com/s/18kRDq4INYKjJkGGXbnwuMg?pwd=45ci",
+    "weight_url": "https://pan.baidu.com/s/1hSw-i9VLHxjgBSTwXgPiVA?pwd=tahf"
+  },
+  {
+    "id": "GOLA",
+    "name": "GOLA",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1zAHGjvH_znHGV4GySM7F2w?pwd=im3m",
+    "code_url": "https://pan.baidu.com/s/1EV0ERFYVOAyXP_KdcAeX7g?pwd=cj1r",
+    "weight_url": "https://pan.baidu.com/s/1PRCMZbsNNshz4IhSRvSzLg?pwd=er9m"
+  },
+  {
+    "id": "IPT",
+    "name": "IPT",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/17HzGGmMLexPp2vCvrs-ubA?pwd=pf5y",
+    "code_url": "https://pan.baidu.com/s/11iNREtqc9_kOVugSkUnB_Q?pwd=uqf3",
+    "weight_url": "https://pan.baidu.com/s/1JNngq-dYO_40zJkGSIiGjQ?pwd=6c48"
+  },
+  {
+    "id": "MMLoRAT",
+    "name": "MMLoRAT",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1ARTFhU9d_WOThq52seXj1Q?pwd=jxfp",
+    "code_url": "https://pan.baidu.com/s/1YdKSJ1l6QwekWdf2F6YHKw?pwd=ycbu",
+    "weight_url": "https://pan.baidu.com/s/12lLNtNw_cNanSTWIVITO4w?pwd=9xxb"
+  },
+  {
+    "id": "MOSSTrack",
+    "name": "MOSSTrack",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1hOrMTf7sHdFaRkd0n3RGBA?pwd=nr4c",
+    "code_url": "https://pan.baidu.com/s/1OlxAtR3JkOpPml4RNBafOA?pwd=c3q2",
+    "weight_url": "https://pan.baidu.com/s/1bh-lOrP6_YSn6DYMEpzM0A?pwd=94vn"
+  },
+  {
+    "id": "MRTTrack",
+    "name": "MRTTrack",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1lWUs5h3PJuV-kKN6YYKlYw?pwd=ghf9",
+    "code_url": "https://pan.baidu.com/s/1diCGh_2NE3BNbBsC4zvajA?pwd=pyja",
+    "weight_url": "https://pan.baidu.com/s/1NbX3eY5ztefJhczHdfyNIg?pwd=k98k"
+  },
+  {
+    "id": "OSTrack",
+    "name": "OSTrack",
+    "notes": "Evaluated on DRGBT1K test split",
+    "result_path": "G:\\DRGBT1k_Results\\OSTrack_DRGBT1k.zip",
+    "code_path": "G:\\DRGBT1k_method_code\\OSTrack_drgbt1k.zip",
+    "weight_path": "G:\\DRGBT1k_checkpoint\\OSTrack_ep0030.pth.tar",
+    "result_url": "https://pan.baidu.com/s/17eTsZPkXcJKnyRZKqKNjrg?pwd=ude5",
+    "code_url": "https://pan.baidu.com/s/1X5LYrTwKz9ctH_XtXhMvaQ?pwd=cu5x",
+    "weight_url": "https://pan.baidu.com/s/1uzdmNT_EF8FOtccplOIFtA?pwd=5jwh"
+  },
+  {
+    "id": "PURA",
+    "name": "PURA",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1H1Oco_K-IN7XNc3pwpnt_g?pwd=973j",
+    "code_url": "https://pan.baidu.com/s/1MDNxk51JsEG0OGxATH7jCg?pwd=ik55",
+    "weight_url": "https://pan.baidu.com/s/1Lqd2_xQYcYE3OXM86dCgIw?pwd=d8xa"
+  },
+  {
+    "id": "QSTNet",
+    "name": "QSTNet",
+    "notes": "Evaluated on DRGBT1K test split",
+    "result_path": "G:\\DRGBT1k_Results\\QSTNet_DRGBT1k.zip",
+    "code_path": "G:\\DRGBT1k_method_code\\QSTNet_DRGBT1k.zip",
+    "weight_path": "G:\\DRGBT1k_checkpoint\\QSTNet_ep0013.pth.tar",
+    "result_url": "https://pan.baidu.com/s/1gvfRk_OlEiunbYSJWr0dtA?pwd=k8x3",
+    "code_url": "https://pan.baidu.com/s/1wQv3SfvgMEEeCj0NqzgyAg?pwd=xi66",
+    "weight_url": "https://pan.baidu.com/s/1iWFWWN3IDPjmojqGuMimWA?pwd=s51e"
+  },
+  {
+    "id": "SCDT",
+    "name": "SCDT",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1H4s6CGZLYqIsPDeQ478kBg?pwd=b1kj",
+    "code_url": "https://pan.baidu.com/s/1oTeAUuXXw8aJKaLFtW6kYA?pwd=smvv",
+    "weight_url": "https://pan.baidu.com/s/1eIOtWwICHELV51X5pXxvIg?pwd=r83v"
+  },
+  {
+    "id": "SDSTrack",
+    "name": "SDSTrack",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/14wMYcqhLipC6VfgPLw94Bg?pwd=vas3",
+    "code_url": "https://pan.baidu.com/s/1oHjFyO0VKy-povaEqaIctg?pwd=mbwh",
+    "weight_url": "https://pan.baidu.com/s/10u9JMUKoplWOxejkMotYZg?pwd=2grz"
+  },
+  {
+    "id": "STTrack",
+    "name": "STTrack",
+    "notes": "Evaluated on DRGBT1K test split",
+    "result_path": "G:\\DRGBT1k_Results\\STTrack_DRGBT1k.zip",
+    "code_path": "G:\\DRGBT1k_method_code\\STTrack",
+    "weight_path": "G:\\DRGBT1k_checkpoint\\STTrack_ep0030.pth.tar",
+    "result_url": "https://pan.baidu.com/s/1KrPqMOV1bUxeVjX_M92VsQ?pwd=sput",
+    "code_url": "https://pan.baidu.com/s/1k2PnhRhvT7i7eXT0ND8azA?pwd=c3un",
+    "weight_url": "https://pan.baidu.com/s/11MJlrrCO3KCYjqJ8B_HOUw?pwd=5vfn"
+  },
+  {
+    "id": "TATrack",
+    "name": "TATrack",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/19FYm1KempGhNyy2zGhe7fQ?pwd=zrqf",
+    "code_url": "https://pan.baidu.com/s/1J7ucOjJzlkQU5a0aIyzfyQ?pwd=yueg",
+    "weight_url": "https://pan.baidu.com/s/1DcZE8KXhn3pDKymnbF2wHQ?pwd=pjj2"
+  },
+  {
+    "id": "TBSI",
+    "name": "TBSI",
+    "notes": "Evaluated on DRGBT1K test split",
+    "result_path": "G:\\DRGBT1k_Results\\TBSI_DRGBT1k.zip",
+    "code_path": "G:\\DRGBT1k_method_code\\TBSI.zip",
+    "weight_path": "G:\\DRGBT1k_checkpoint\\TBSITrack_ep0030.pth.tar",
+    "result_url": "https://pan.baidu.com/s/1fVveodB-daveTEdTjbKeAQ?pwd=x4e7",
+    "code_url": "https://pan.baidu.com/s/1bk2NR-XdAKAzxQJX0fZRLg?pwd=br3c",
+    "weight_url": "https://pan.baidu.com/s/1W5Va7iqITo5h7PIZrL69DA?pwd=etzt"
+  },
+  {
+    "id": "TMKD",
+    "name": "TMKD",
+    "result_path": "",
+    "code_path": "",
+    "weight_path": "",
+    "result_url": "https://pan.baidu.com/s/1LBLg6d_pamziovFwnR3JTg?pwd=mxmw",
+    "code_url": "https://pan.baidu.com/s/1mdRCZbe0-lzC3gE977b5MA?pwd=wbde",
+    "weight_url": "https://pan.baidu.com/s/1q4wcWSm04Anqlug3nhGFCg?pwd=fk3r"
+  },
+  {
+    "id": "UATrack",
+    "name": "UATrack",
+    "notes": "Evaluated on DRGBT1K test split",
+    "result_path": "G:\\DRGBT1k_Results\\UATrack_DRGBT1k.zip",
+    "code_path": "G:\\DRGBT1k_method_code\\UATrack_DRGBT.zip",
+    "weight_path": "G:\\DRGBT1k_checkpoint\\UATrack_ep0030.pth.tar",
+    "result_url": "https://pan.baidu.com/s/1jLsZf8ySjRlc_Xh1H3pQ7A?pwd=r5qf",
+    "code_url": "https://pan.baidu.com/s/1ncEAQs3SKJhRUCP4miu-2w?pwd=ttqm",
+    "weight_url": "https://pan.baidu.com/s/1B9joTDBtTUFtwFySmlVtyw?pwd=quyk"
+  }
+]

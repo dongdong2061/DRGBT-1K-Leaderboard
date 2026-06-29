@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DRGBT-1K Benchmark</title>
+  <meta name="description" content="DRGBT-1K benchmark leaderboard for DRGBT tracking methods.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <!-- <p class="eyebrow">GitHub Pages Ready</p> -->
+        <h1>DRGBT-1K Benchmark</h1>
+        <p class="hero-text">
+          A lightweight benchmark page for DRGBT tracking methods, with sortable PR, NPR, and SR rankings, time-based comparison, paper links, and reserved slots for tracking results, code, and weights.
+        </p>
+        <p class="data-status" id="data-status">Loading live data from DRGBT-1K_results.xlsx...</p>
+      </div>
+      <div class="hero-panel" id="hero-panel"></div>
+    </header>
+
+    <main>
+      <section class="overview" id="overview"></section>
+
+      <section class="timeline-block">
+        <div class="section-head">
+          <div>
+            <p class="section-tag">Timeline View</p>
+            <h2>Performance Over Time</h2>
+          </div>
+        </div>
+        <p class="timeline-meta" id="timeline-meta"></p>
+        <div class="timeline-surface">
+          <svg id="timeline-chart" class="timeline-chart" role="img" aria-label="Performance timeline chart"></svg>
+        </div>
+      </section>
+
+      <section class="leaderboard-block">
+        <div class="section-head">
+          <div>
+            <p class="section-tag">Leaderboard</p>
+            <h2>Method Ranking</h2>
+          </div>
+          <div class="toolbar">
+            <label class="control">
+              <span>Sort Metric</span>
+              <select id="metric-select" aria-label="Select a ranking metric">
+                <option value="SR">SR</option>
+                <option value="NPR">NPR</option>
+                <option value="PR">PR</option>
+              </select>
+            </label>
+            <label class="control">
+              <span>Search Methods</span>
+              <input id="search-input" type="search" placeholder="e.g. GOLA">
+            </label>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Method</th>
+                <th>Publication</th>
+                <th>PR</th>
+                <th>NPR</th>
+                <th>SR</th>
+                <th>Paper</th>
+                <th>Resources</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="notes-block">
+        <div class="section-head">
+          <div>
+            <p class="section-tag">Metrics</p>
+            <h2>Metric Definitions and Resources</h2>
+          </div>
+        </div>
+        <div class="notes-grid">
+          <article class="note-card">
+            <h3>PR</h3>
+            <p>Precision Rate, typically measured as the hit rate under a 20-pixel center error threshold.</p>
+          </article>
+          <article class="note-card">
+            <h3>NPR</h3>
+            <p>Normalized Precision Rate, computed from the normalized center error curve.</p>
+          </article>
+          <article class="note-card">
+            <h3>SR</h3>
+            <p>Success Rate, derived from the IoU success curve and useful for judging overall overlap quality.</p>
+          </article>
+          <article class="note-card">
+            <h3>Resources</h3>
+            <p>For more information about the dataset, please visit the 
+                <a href="https://github.com/zhaodongAH/DRGBT1K">webpage.</a>
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
