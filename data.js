@@ -1,5 +1,5 @@
 window.DRGBT_DATA = {
-  "generatedAt": "2026-06-27T15:44:50",
+  "generatedAt": "2026-11-24T17:44:31",
   "dataset": {
     "name": "DRGBT1K",
     "trainSequences": 800,
@@ -9,52 +9,52 @@ window.DRGBT_DATA = {
       "NPR",
       "SR"
     ],
-    "source": "data.js"
+    "source": "DRGBT1k_results.xlsx"
   },
   "methods": [
-    // {
-    //   "id": "batch-1-mcitrack",
-    //   "name": "MCITrack",
-    //   "paperTitle": "",
-    //   "publication": "AAAI 2025",
-    //   "timeRaw": "AAAI’25",
-    //   "yearNumber": 2025,
-    //   "batchLabel": "Batch 1",
-    //   "categoryLabel": "Full Fine-tuning RGBT",
-    //   "status": "evaluated",
-    //   "hasMetrics": true,
-    //   "metrics": {
-    //     "PR": 0.394,
-    //     "NPR": 0.3394,
-    //     "SR": 0.2829
-    //   },
-    //   "resources": [
-    //     {
-    //       "key": "paper",
-    //       "label": "Paper",
-    //       "url": "https://arxiv.org/abs/2412.11023",
-    //       "localPath": null
-    //     },
-    //     {
-    //       "key": "result",
-    //       "label": "Tracking Result",
-    //       "url": "https://pan.baidu.com/s/1qPFEtM197WGgKwxbK5dTPg?pwd=t59k",
-    //       "localPath": null
-    //     },
-    //     {
-    //       "key": "code",
-    //       "label": "Code",
-    //       "url": "https://pan.baidu.com/s/1DeH0jwfsapeSHDnvGZMvSg?pwd=2hb2",
-    //       "localPath": null
-    //     },
-    //     {
-    //       "key": "weight",
-    //       "label": "Weight",
-    //       "url": "https://pan.baidu.com/s/1KBLNVQwzRmjYQDVcFFz1AQ?pwd=4cmk",
-    //       "localPath": null
-    //     }
-    //   ]
-    // },
+    {
+      "id": "batch-1-mcitrack",
+      "name": "MCITrack",
+      "paperTitle": "",
+      "publication": "AAAI 2025",
+      "timeRaw": "AAAI 2025",
+      "yearNumber": 2025,
+      "batchLabel": "Batch 1",
+      "categoryLabel": "Full Fine-tuning RGBT",
+      "status": "evaluated",
+      "hasMetrics": true,
+      "metrics": {
+        "PR": 0.41982318811922775,
+        "NPR": 0.3607353435024009,
+        "SR": 0.2972559267971874
+      },
+      "resources": [
+        {
+          "key": "paper",
+          "label": "Paper",
+          "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32440",
+          "localPath": null
+        },
+        {
+          "key": "result",
+          "label": "Tracking Result",
+          "url": "./tracking-results/MCITrack_DRGBT1K.zip",
+          "localPath": null
+        },
+        {
+          "key": "code",
+          "label": "Code",
+          "url": "https://github.com/kangben258/MCITrack",
+          "localPath": null
+        },
+        {
+          "key": "weight",
+          "label": "Weight",
+          "url": null,
+          "localPath": null
+        }
+      ]
+    },
     {
       "id": "batch-1-ostrack",
       "name": "OSTrack",
@@ -748,7 +748,7 @@ window.DRGBT_DATA = {
       "name": "GOLA",
       "paperTitle": "",
       "publication": "AAAI 2026",
-      "timeRaw": "AAAI’26",
+      "timeRaw": "AAAI'26",
       "yearNumber": 2026,
       "batchLabel": "Batch 1",
       "categoryLabel": "Partial Fine-tuning RGBT",

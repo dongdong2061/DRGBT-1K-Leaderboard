@@ -117,6 +117,11 @@ body::before {
   font-weight: 600;
 }
 
+.data-status:empty,
+#submission-status:empty {
+  display: none;
+}
+
 .hero-text {
   margin: 18px 0 0;
   max-width: 58ch;
@@ -305,6 +310,58 @@ body::before {
 .score {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
+}
+
+.submission {
+  margin: 0 0 18px;
+}
+
+.submission summary,
+.submission-button {
+  width: fit-content;
+  padding: 9px 15px;
+  border: 1px solid var(--accent-deep);
+  border-radius: 12px;
+  background: var(--accent-deep);
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submission[open] {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-strong);
+}
+
+.submission-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 205px), 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.submission-fields .control input,
+.submission-json textarea {
+  width: 100%;
+  min-width: 0;
+}
+
+.submission-json {
+  margin-top: 12px;
+}
+
+.submission-json textarea {
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  resize: vertical;
+}
+
+#submission-status {
+  color: var(--accent-deep);
 }
 
 .resource-links {

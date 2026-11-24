@@ -1,10 +1,16 @@
 (function () {
+  const DATA_JS_SOURCE = "data.js";
+  const EXCEL_SOURCE = "DRGBT1k_results.xlsx";
+  const SUBMISSION_REPOSITORY = "https://github.com/dongdong2061/DRGBT-1K-Leaderboard";
+  const SUBMISSION_METRICS = ["PR", "NPR", "SR"];
+  const publishedSubmissionKeys = new Set();
+
   const DATASET_INFO = {
     name: "DRGBT1K",
     trainSequences: 800,
     testSequences: 245,
     metrics: ["PR", "NPR", "SR"],
-    source: "DRGBT1k_results.xlsx"
+    source: DATA_JS_SOURCE
   };
 
   const BATCH_LABELS = {
@@ -28,7 +34,7 @@
     metric: "SR",
     query: "",
     data: null,
-    sourceLabel: DATASET_INFO.source
+    sourceLabel: DATA_JS_SOURCE
   };
 
   const metricSelect = document.getElementById("metric-select");
@@ -358,7 +364,7 @@
     };
   }
 
-  function hydrateFallbackData(data) {
+  function hydrateSnapshotData(data) {
     const methods = (data.methods || []).map((method, index) => {
       const metrics = method.metrics || {};
       const pr = parseMetric(metrics.PR);
@@ -409,39 +415,185 @@
       throw new Error("XLSX parser is unavailable");
     }
 
-    const response = await fetch(DATASET_INFO.source, { cache: "no-store" });
+    const response = await fetch(EXCEL_SOURCE, { cache: "no-store" });
     if (!response.ok) {
-      throw new Error(`Unable to fetch ${DATASET_INFO.source} (${response.status})`);
+      throw new Error(`Unable to fetch ${EXCEL_SOURCE} (${response.status})`);
     }
 
     const buffer = await response.arrayBuffer();
     const workbook = XLSX.read(buffer, { type: "array" });
-    return buildMethodsFromWorkbook(workbook, configMap, DATASET_INFO.source);
+    return buildMethodsFromWorkbook(workbook, configMap, EXCEL_SOURCE);
   }
 
   async function loadData() {
-    try {
-      let configMap = new Map();
-      try {
-        const configEntries = await loadMethodConfig();
-        configMap = loadConfigMap(configEntries);
-      } catch (configError) {
-        configMap = new Map();
-      }
-
-      const data = await loadExcelData(configMap);
-      state.sourceLabel = DATASET_INFO.source;
+    // The checked-in snapshot is the primary source; Excel parsing is only a fallback.
+    if (window.DRGBT_DATA) {
+      const data = hydrateSnapshotData(window.DRGBT_DATA);
+      state.sourceLabel = data.dataset && data.dataset.source ? data.dataset.source : DATA_JS_SOURCE;
       return data;
-    } catch (error) {
-      if (window.DRGBT_DATA) {
-        const fallback = hydrateFallbackData(window.DRGBT_DATA);
-        const fallbackSource = fallback.dataset && fallback.dataset.source ? fallback.dataset.source : "data.js";
-        state.sourceLabel = `${fallbackSource} fallback`;
-        return fallback;
-      }
-      throw error;
+    }
+
+    let configMap = new Map();
+    try {
+      const configEntries = await loadMethodConfig();
+      configMap = loadConfigMap(configEntries);
+    } catch (configError) {
+      configMap = new Map();
+    }
+
+    const data = await loadExcelData(configMap);
+    state.sourceLabel = `${EXCEL_SOURCE} fallback`;
+    return data;
+  }
+
+  function submissionKey(name) {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  }
+
+  function submissionUrl(value) {
+    try {
+      const url = new URL(value);
+      return ["https:", "http:"].includes(url.protocol) && !url.username && !url.password
+        ? url.href
+        : null;
+    } catch {
+      return null;
     }
   }
+
+  function validateSubmission(entry) {
+    const name = typeof entry?.name === "string" ? entry.name.trim() : "";
+    const publication = typeof entry?.publication === "string" ? entry.publication.trim() : "";
+    const yearNumber = Number(publication.match(/\b(?:19|20)\d{2}\b/)?.[0]);
+    if (!name || name.length > 80 || !submissionKey(name) || !yearNumber || publication.length > 80) {
+      throw new Error("Enter a method name and a publication with a four-digit year.");
+    }
+
+    const metrics = Object.fromEntries(SUBMISSION_METRICS.map((metric) => {
+      const score = entry.metrics?.[metric];
+      if (!Number.isFinite(score) || score < 0 || score > 1) {
+        throw new Error("Enter PR, NPR, and SR as values between 0 and 1.");
+      }
+      return [metric, score];
+    }));
+    const paper = submissionUrl(entry.paper);
+    const result = submissionUrl(entry.result);
+    if (!paper || !result) {
+      throw new Error("Provide HTTP or HTTPS links for the paper and tracking results.");
+    }
+    return { name, publication, metrics, paper, result };
+  }
+
+  async function syncPublishedSubmissions(data) {
+    // A plain local static server serves the Liquid template, while GitHub Pages serves JSON.
+    if (location.protocol === "file:") {
+      return;
+    }
+
+    try {
+      const response = await fetch("submissions.json", { cache: "no-cache" });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      const published = await response.json();
+      const indexes = new Map(data.methods.map((method, index) => [submissionKey(method.name), index]));
+      let invalid = 0;
+      for (const [key, value] of Object.entries(published ?? {})) {
+        let submission;
+        try {
+          submission = validateSubmission(value);
+          if (key !== submissionKey(submission.name)) {
+            throw new Error("The submission filename does not match the method name.");
+          }
+        } catch {
+          invalid += 1;
+          continue;
+        }
+
+        const index = indexes.get(key);
+        const previous = data.methods[index];
+        const resources = (previous?.resources ?? []).filter(({ key }) => key !== "paper" && key !== "result");
+        const method = {
+          ...previous,
+          id: previous?.id ?? `submission-${key}`,
+          name: submission.name,
+          publication: submission.publication,
+          timeRaw: submission.publication,
+          yearNumber: Number(submission.publication.match(/\b(?:19|20)\d{2}\b/)[0]),
+          batchLabel: previous?.batchLabel ?? "Community Submissions",
+          categoryLabel: previous?.categoryLabel ?? "Community Submissions",
+          status: "evaluated",
+          hasMetrics: true,
+          metrics: submission.metrics,
+          resources: [
+            { key: "paper", label: "Paper", url: submission.paper },
+            { key: "result", label: "Tracking Result", url: submission.result },
+            ...resources
+          ]
+        };
+        if (index === undefined) {
+          data.methods.push(method);
+        } else {
+          data.methods[index] = method;
+        }
+        publishedSubmissionKeys.add(key);
+      }
+      if (invalid) {
+        dataStatus.textContent = "Some submitted results could not be loaded.";
+      }
+    } catch (error) {
+      if (location.hostname === "dongdong2061.github.io") {
+        dataStatus.textContent = "Published submissions are temporarily unavailable.";
+      }
+      console.warn("Unable to load published submissions", error);
+    }
+  }
+
+  const submissionForm = document.getElementById("submission-form");
+  const submissionStatus = document.getElementById("submission-status");
+  const submissionDraft = document.getElementById("submission-draft");
+
+  submissionForm.addEventListener("input", () => {
+    submissionDraft.hidden = true;
+    submissionStatus.textContent = "";
+  });
+
+  submissionForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submissionDraft.hidden = true;
+    submissionStatus.textContent = "";
+
+    try {
+      const fields = new FormData(submissionForm);
+      const submission = validateSubmission({
+        name: fields.get("name"),
+        publication: fields.get("publication"),
+        metrics: Object.fromEntries(SUBMISSION_METRICS.map((metric) => [
+          metric, submissionForm.elements.namedItem(metric).valueAsNumber
+        ])),
+        paper: fields.get("paper"),
+        result: fields.get("result")
+      });
+      const key = submissionKey(submission.name);
+      const path = `_data/submissions/${key}.json`;
+      const json = JSON.stringify(submission, null, 2) + "\n";
+      const editor = publishedSubmissionKeys.has(key)
+        ? new URL(`${SUBMISSION_REPOSITORY}/edit/main/${path}`)
+        : new URL(`${SUBMISSION_REPOSITORY}/new/main`);
+
+      if (!publishedSubmissionKeys.has(key)) {
+        editor.searchParams.set("filename", path);
+        editor.searchParams.set("value", json);
+      }
+      document.getElementById("submission-path").textContent = path;
+      document.getElementById("submission-link").href = editor.href;
+      submissionDraft.querySelector("textarea").value = json;
+      submissionDraft.hidden = false;
+      document.getElementById("submission-link").focus();
+    } catch (error) {
+      submissionStatus.textContent = error.message;
+    }
+  });
 
   function filterMethods(methods) {
     if (!state.query) {
@@ -543,7 +695,6 @@
 
     heroPanel.innerHTML = `
       <h2>${escapeHtml(state.metric)} Top 3</h2>
-      <p class="muted">The page keeps the original lightweight layout, now powered by DRGBT1k_results.xlsx with more methods, paper links, and reserved resource slots.</p>
       <ul>
         ${topThree.map((method, index) => `
           <li>
@@ -597,7 +748,6 @@
           </td>
           <td>
             <div class="time-label">${escapeHtml(method.publication || method.timeRaw || "Unknown")}</div>
-            <div class="muted">${method.yearNumber || ""}</div>
           </td>
           <td class="score">${escapeHtml(scoreText(metricValue(method, "PR")))}</td>
           <td class="score">${escapeHtml(scoreText(metricValue(method, "NPR")))}</td>
@@ -769,10 +919,6 @@
     `;
   }
 
-  function renderStatus() {
-    dataStatus.textContent = "If your DRGBT tracking work has been publicly released, please feel free to contact us at zhaodongding_ah@163.com, and we will include it in the leaderboard.";
-  }
-
   function render() {
     if (!state.data) {
       return;
@@ -781,7 +927,6 @@
     const filtered = filterMethods(state.data.methods);
     const sorted = sortMethods(filtered);
 
-    renderStatus();
     renderHero(sorted);
     renderOverview(sorted);
     renderTable(sorted);
@@ -792,9 +937,11 @@
     try {
       state.data = await loadData();
       render();
+      await syncPublishedSubmissions(state.data);
+      render();
     } catch (error) {
       dataStatus.textContent = `Unable to load benchmark data: ${error.message}`;
-      heroPanel.innerHTML = `<p class="muted">Unable to load DRGBT1k_results.xlsx and no fallback snapshot is available.</p>`;
+      heroPanel.innerHTML = `<p class="muted">Unable to load data.js or the Excel fallback.</p>`;
     }
   }
 
