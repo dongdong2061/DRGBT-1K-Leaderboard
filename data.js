@@ -1,5 +1,5 @@
 window.DRGBT_DATA = {
-  "generatedAt": "2026-11-24T17:44:31",
+  "generatedAt": "2026-11-24T18:30:31",
   "dataset": {
     "name": "DRGBT1K",
     "trainSequences": 800,
@@ -24,9 +24,9 @@ window.DRGBT_DATA = {
       "status": "evaluated",
       "hasMetrics": true,
       "metrics": {
-        "PR": 0.41982318811922775,
-        "NPR": 0.3607353435024009,
-        "SR": 0.2972559267971874
+        "PR": 0.5532552229724781,
+        "NPR": 0.471496605179367,
+        "SR": 0.39267830068185394
       },
       "resources": [
         {
