@@ -1,5 +1,5 @@
 window.DRGBT_DATA = {
-  "generatedAt": "2026-11-24T18:30:31",
+  "generatedAt": "2026-11-25T09:35:48",
   "dataset": {
     "name": "DRGBT1K",
     "trainSequences": 800,
@@ -12,49 +12,6 @@ window.DRGBT_DATA = {
     "source": "DRGBT1k_results.xlsx"
   },
   "methods": [
-    {
-      "id": "batch-1-mcitrack",
-      "name": "MCITrack",
-      "paperTitle": "",
-      "publication": "AAAI 2025",
-      "timeRaw": "AAAI 2025",
-      "yearNumber": 2025,
-      "batchLabel": "Batch 1",
-      "categoryLabel": "Full Fine-tuning RGBT",
-      "status": "evaluated",
-      "hasMetrics": true,
-      "metrics": {
-        "PR": 0.5532552229724781,
-        "NPR": 0.471496605179367,
-        "SR": 0.39267830068185394
-      },
-      "resources": [
-        {
-          "key": "paper",
-          "label": "Paper",
-          "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32440",
-          "localPath": null
-        },
-        {
-          "key": "result",
-          "label": "Tracking Result",
-          "url": "./tracking-results/MCITrack_DRGBT1K.zip",
-          "localPath": null
-        },
-        {
-          "key": "code",
-          "label": "Code",
-          "url": "https://github.com/kangben258/MCITrack",
-          "localPath": null
-        },
-        {
-          "key": "weight",
-          "label": "Weight",
-          "url": null,
-          "localPath": null
-        }
-      ]
-    },
     {
       "id": "batch-1-ostrack",
       "name": "OSTrack",

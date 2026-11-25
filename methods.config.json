@@ -216,11 +216,5 @@
     "result_url": "https://pan.baidu.com/s/1jLsZf8ySjRlc_Xh1H3pQ7A?pwd=r5qf",
     "code_url": "https://pan.baidu.com/s/1ncEAQs3SKJhRUCP4miu-2w?pwd=ttqm",
     "weight_url": "https://pan.baidu.com/s/1B9joTDBtTUFtwFySmlVtyw?pwd=quyk"
-  },
-  {
-    "id": "MCITrack",
-    "name": "MCITrack",
-    "result_url": "./tracking-results/MCITrack_DRGBT1K.zip",
-    "code_url": "https://github.com/kangben258/MCITrack"
   }
 ]
